@@ -1,10 +1,11 @@
+import config from "./config";
+
 import "module-alias/register"; // for absolute paths
 
 import express from "express";
 
-const PORT = process.env.PORT || 5000;
 const app = express();
 
-app.listen(PORT, () => {
-  console.log(`server running on ${PORT}`);
+app.listen(config.port, () => {
+  console.log(`Server listening on port: ${config.port}`);
 });

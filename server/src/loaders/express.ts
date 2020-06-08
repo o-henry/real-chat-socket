@@ -8,6 +8,8 @@ const expressLoader = ({ app }: { app: express.Application }) => {
     res.status(200).send("Welcome");
     res.status(200).end("end");
   });
+
+  app.use(cors());
 };
 
 export default expressLoader;

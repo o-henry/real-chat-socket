@@ -1,13 +1,17 @@
-import io from "socket.io";
 import e from "express";
 
-function socketServer({ server }: { server: e.Application }) {
-  io(server).on("connection", (socket: any) => {
-    console.log("test");
-    socket.on("test", (data: any) => {
-      console.log(data, "print test message");
+const socketServer = ({ server }: { server: e.Application }) => {
+  const io = require("socket.io")(server);
+  io.set("origins", "*:*");
+
+  io.on("connection", (socket: any) => {
+    const { id } = socket.client;
+    console.log(id);
+
+    socket.on("chat message", (msg: string) => {
+      io.emit("chat message", msg);
     });
   });
-}
+};
 
 export default socketServer;

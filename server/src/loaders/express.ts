@@ -4,11 +4,12 @@ import cors from "cors";
 import config from "@config/index";
 
 const expressLoader = ({ app }: { app: express.Application }) => {
+  /* Health Check endpoints */
   app.get("/", (req, res) => {
-    res.status(200).send("Welcome");
-    res.status(200).end("end");
+    res.status(200).end("test");
   });
 
+  // Enable Cross Origin Resource Sharing to all origins by default
   app.use(cors());
 };
 

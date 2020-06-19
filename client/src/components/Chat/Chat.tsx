@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useChatInput from "./hooks/useInput";
+import useChatInput from "../../hooks/useInput";
 import io from "socket.io-client";
 
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);

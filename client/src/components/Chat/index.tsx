@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import useInput from "../../hooks/useInput";
 import io from "socket.io-client";
+import * as S from "./style";
 
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
-const Chat = () => {
+const Chat = ({ nickname }: any) => {
   const [chat, setChat] = useState<any>([]);
   const [inputs, setInputs] = useInput();
-  const { msg, nickname } = inputs;
+  const { msg } = inputs;
 
   useEffect(() => {
     socket.on("chat message", ({ nickname, msg }: any) => {
@@ -15,12 +16,16 @@ const Chat = () => {
     });
   });
 
-  const onMessageSubmit = () => {
+  const onMessageSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
     socket.emit("chat message", { nickname, msg });
+    setInputs({
+      ...chat,
+      [msg]: "",
+    });
   };
 
   const renderChat = () => {
-    console.log("chat", chat);
     return chat.map(({ nickname, msg }: any, idx: any) => {
       return (
         <div key={idx}>
@@ -33,10 +38,10 @@ const Chat = () => {
 
   return (
     <>
-      <span>Nickname</span>
-      <input name="nickname" value={nickname} onChange={setInputs} />
-      <input name="msg" value={msg} onChange={setInputs} />
-      <button onClick={onMessageSubmit}>Send</button>
+      <S.Message>
+        <textarea name="msg" value={msg} onChange={setInputs} />
+        <button onClick={onMessageSubmit}>Send</button>
+      </S.Message>
       <div>{renderChat()}</div>
     </>
   );

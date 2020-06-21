@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import useChatInput from "../../hooks/useInput";
+import useInput from "../../hooks/useInput";
 import io from "socket.io-client";
 
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
 const Chat = () => {
   const [chat, setChat] = useState<any>([]);
-  const [inputs, setInputs] = useChatInput();
+  const [inputs, setInputs] = useInput();
   const { msg, nickname } = inputs;
 
   useEffect(() => {

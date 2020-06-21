@@ -1,10 +1,10 @@
 import React from "react";
-import Chat from "./components/Chat/Chat";
+import Enrollment from "./pages/Enrollment/Template";
 
 function App() {
   return (
     <>
-      <Chat />
+      <Enrollment />
     </>
   );
 }

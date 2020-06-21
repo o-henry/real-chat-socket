@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-const useChatInput = () => {
+const useInput = () => {
+  const [value, setValue] = useState<any>();
+
   const [inputs, setInputs] = useState<any>({
     msg: "",
     nickname: "",
@@ -14,7 +16,12 @@ const useChatInput = () => {
     });
   };
 
-  return [inputs, onTextChange];
+  const onChange = (e: any) => {
+    const { value } = e.target;
+    setValue(value);
+  };
+
+  return [inputs, onTextChange, value, onChange];
 };
 
-export default useChatInput;
+export default useInput;

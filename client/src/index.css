@@ -159,10 +159,22 @@ body,
   font-family: "S-CoreDream-3Light", Open Sans, sans-serif !important;
   height: 100% !important;
   min-height: 100vh;
+  background: linear-gradient(180deg, #f3f3fb 0%, #fdfbfd 100%);
 }
 
 * {
   font-family: "S-CoreDream-3Light", Open Sans, sans-serif !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
 }
 
 .App {

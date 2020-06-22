@@ -15,16 +15,18 @@ const EnrollmentTemplate = () => {
   return (
     <>
       <S.Main>
-        <S.Header>Random Chatting</S.Header>
         {!isClick && (
-          <S.Nickname>
-            <S.Input>
-              <input name="nickname" value={nickname} onChange={setInputs} />
-            </S.Input>
-            <S.Button>
-              <button onClick={handleClick}>입장</button>
-            </S.Button>
-          </S.Nickname>
+          <>
+            <S.Header>Random Chatting</S.Header>
+            <S.Nickname>
+              <S.Input>
+                <input name="nickname" value={nickname} onChange={setInputs} />
+              </S.Input>
+              <S.Button>
+                <button onClick={handleClick}>입장</button>
+              </S.Button>
+            </S.Nickname>
+          </>
         )}
         {isClick && <Chat nickname={nickname} />}
       </S.Main>

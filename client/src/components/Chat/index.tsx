@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import useInput from "../../hooks/useInput";
 import io from "socket.io-client";
 import * as S from "./style";
+import { send } from "../../assets";
 
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
 const Chat = ({ nickname }: any) => {
   const [chat, setChat] = useState<any>([]);
   const [inputs, setInputs] = useInput();
+  console.log("inputs", inputs);
+
   const { msg } = inputs;
 
   useEffect(() => {
@@ -20,7 +23,7 @@ const Chat = ({ nickname }: any) => {
     e.preventDefault();
     socket.emit("chat message", { nickname, msg });
     setInputs({
-      ...chat,
+      ...inputs,
       [msg]: "",
     });
   };
@@ -39,8 +42,16 @@ const Chat = ({ nickname }: any) => {
   return (
     <>
       <S.Message>
-        <textarea name="msg" value={msg} onChange={setInputs} />
-        <button onClick={onMessageSubmit}>Send</button>
+        <S.Textarea
+          className="text-area"
+          name="msg"
+          value={msg}
+          onChange={setInputs}
+          placeholder="Type a message here"
+        />
+        <S.Button onClick={onMessageSubmit}>
+          <S.Img src={send} alt="send message" />
+        </S.Button>
       </S.Message>
       <div>{renderChat()}</div>
     </>

@@ -10,7 +10,6 @@ const EnrollmentTemplate = () => {
 
   const handleKeyDown = (e: { key: string }) => {
     if (e.key == "Enter" && nickname) {
-      console.log("do validate");
       setisClick(true);
     }
   };

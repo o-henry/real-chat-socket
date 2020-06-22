@@ -7,15 +7,20 @@ import { send } from "../../assets";
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
 const Chat = ({ nickname }: any) => {
+  const [count, setCount] = useState("");
   const [chat, setChat] = useState<any>([]);
   const [inputs, setInputs] = useInput();
-  console.log("inputs", inputs);
 
   const { msg } = inputs;
 
   useEffect(() => {
     socket.on("chat message", ({ nickname, msg }: any) => {
       setChat([...chat, { nickname, msg }]);
+      console.log("test");
+    });
+    socket.on("status", (data: any) => {
+      console.log("heehehehe");
+      console.log("Connected Clients : ", data.numClients);
     });
   });
 
@@ -25,7 +30,6 @@ const Chat = ({ nickname }: any) => {
 
   const handleKeyDown = (e: { key: string }) => {
     if (e.key == "Enter" && msg != "") {
-      console.log("do validate");
       onMessageSubmit();
     }
   };
@@ -56,6 +60,8 @@ const Chat = ({ nickname }: any) => {
           <S.Img src={send} alt="send message" />
         </S.Button>
       </S.Message>
+      <span>{count}</span>
+
       <div>{renderChat()}</div>
     </>
   );

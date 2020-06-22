@@ -3,9 +3,10 @@ import useInput from "../../hooks/useInput";
 import io from "socket.io-client";
 import * as S from "./style";
 import { send } from "../../assets";
-import { clear } from "console";
 
-const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
+const socket = io.connect(
+  `${process.env.REACT_APP_HEROKU_URL}` || `${process.env.REACT_APP_SOCKET_URL}`
+);
 
 const Chat = ({ nickname }: any) => {
   const [chat, setChat] = useState<any>([]);

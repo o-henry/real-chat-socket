@@ -4,9 +4,8 @@
   "description": "",
   "main": "./dist/server.js",
   "scripts": {
-    "build": "rimraf ./dist && tsc",
     "start:dev": "nodemon",
-    "start": "npm run build && node dist/server.js",
+    "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -39,6 +38,7 @@
     "@services": "dist/services"
   },
   "engines": {
-    "node": "10.16.1"
+    "node": "10.16.1",
+    "npm": "6.14.5"
   }
 }

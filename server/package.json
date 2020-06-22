@@ -2,7 +2,7 @@
   "name": "real-chat",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/server.js",
+  "main": ".src/server.ts",
   "scripts": {
     "start:dev": "nodemon",
     "start": "ts-node src/server.ts",

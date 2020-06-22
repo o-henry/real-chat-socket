@@ -172,6 +172,9 @@ textarea:focus,
 button:focus {
   outline: none;
 }
+input::placeholder {
+  color: rgba(112, 124, 151, 0.5);
+}
 
 button:focus {
   outline: none;

@@ -28,9 +28,12 @@ export const Nickname = styled.div`
   align-items: center;
 `;
 
-export const Input = styled.div`
+export const Input = styled.input`
   display: inherit;
   height: 2rem !important;
+  width: 11rem;
+  text-align: center;
+  border: none;
 `;
 
 export const Button = styled.div`

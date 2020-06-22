@@ -19,22 +19,24 @@ const Chat = ({ nickname }: any) => {
     });
   });
 
-  const onMessageSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  const onMessageSubmit = () => {
     socket.emit("chat message", { nickname, msg });
-    setInputs({
-      ...inputs,
-      [msg]: "",
-    });
+  };
+
+  const handleKeyDown = (e: { key: string }) => {
+    if (e.key == "Enter" && msg != "") {
+      console.log("do validate");
+      onMessageSubmit();
+    }
   };
 
   const renderChat = () => {
     return chat.map(({ nickname, msg }: any, idx: any) => {
       return (
-        <div key={idx}>
+        <S.Chat key={idx}>
           <span style={{ color: "green" }}>{nickname}: </span>
           <span>{msg}</span>
-        </div>
+        </S.Chat>
       );
     });
   };
@@ -47,6 +49,7 @@ const Chat = ({ nickname }: any) => {
           name="msg"
           value={msg}
           onChange={setInputs}
+          onKeyDown={handleKeyDown}
           placeholder="Type a message here"
         />
         <S.Button onClick={onMessageSubmit}>

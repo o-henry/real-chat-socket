@@ -33,4 +33,8 @@ export const Img = styled.img`
   right: 0;
 `;
 
-export const Chat = styled.div``;
+export const Chat = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 3rem 1rem 3rem;
+`;

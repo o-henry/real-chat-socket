@@ -9,13 +9,11 @@ const useInput = () => {
   });
 
   const onTextChange = (e: any) => {
-    if (e.target && e.target.value && e.target.name) {
-      const { value, name } = e.target;
-      setInputs({
-        ...inputs,
-        [name]: value,
-      });
-    }
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
   };
 
   const onChange = (e: any) => {

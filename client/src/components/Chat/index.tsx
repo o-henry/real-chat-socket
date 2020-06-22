@@ -3,25 +3,30 @@ import useInput from "../../hooks/useInput";
 import io from "socket.io-client";
 import * as S from "./style";
 import { send } from "../../assets";
+import { clear } from "console";
 
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
 const Chat = ({ nickname }: any) => {
-  const [count, setCount] = useState("");
   const [chat, setChat] = useState<any>([]);
   const [inputs, setInputs] = useInput();
 
   const { msg } = inputs;
 
   useEffect(() => {
+    // socket.on("status", (data: any) => {
+    //   console.log("Connected Clients : ", data.numClients);
+    // });
+
     socket.on("chat message", ({ nickname, msg }: any) => {
       setChat([...chat, { nickname, msg }]);
-      console.log("test");
     });
-    socket.on("status", (data: any) => {
-      console.log("heehehehe");
-      console.log("Connected Clients : ", data.numClients);
-    });
+
+    socket.open();
+
+    return () => {
+      socket.close();
+    };
   });
 
   const onMessageSubmit = () => {
@@ -38,15 +43,19 @@ const Chat = ({ nickname }: any) => {
     return chat.map(({ nickname, msg }: any, idx: any) => {
       return (
         <S.Chat key={idx}>
-          <span style={{ color: "green" }}>{nickname}: </span>
-          <span>{msg}</span>
+          <span style={{ color: "blue" }}>{nickname} : </span>
+          <span>
+            {" "}
+            {"\u00A0"}
+            {msg}
+          </span>
         </S.Chat>
       );
     });
   };
 
   return (
-    <>
+    <S.Layout>
       <S.Message>
         <S.Textarea
           className="text-area"
@@ -60,10 +69,8 @@ const Chat = ({ nickname }: any) => {
           <S.Img src={send} alt="send message" />
         </S.Button>
       </S.Message>
-      <span>{count}</span>
-
-      <div>{renderChat()}</div>
-    </>
+      {renderChat()}
+    </S.Layout>
   );
 };
 

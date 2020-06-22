@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding: 2rem 0 2rem 0;
+  overflow-y: auto;
+`;
+
 export const Message = styled.div`
   display: flex;
   justify-content: center;
@@ -36,5 +46,6 @@ export const Img = styled.img`
 export const Chat = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin: 1rem 3rem 1rem 3rem;
+  margin: 0.25rem 3rem 0.25rem 3rem;
+  padding: 10px 0 10px 0;
 `;

@@ -2,18 +2,25 @@ import e from "express";
 
 const socketServer = ({ server }: { server: e.Application }) => {
   const io = require("socket.io")(server);
+
   let numClients = 0;
 
   io.set("origins", "*:*");
 
   io.on("connection", (socket: any) => {
-    numClients++;
-    socket.emit("status", { numClients: numClients });
+    socket.on("status", (numClient: any) => {
+      numClients++;
+      socket.emit("status", { numClient: numClient });
+      socket.broadcast.emit("status", {
+        numClient: numClients,
+      });
+    });
+
     console.log("Connected clients:", numClients);
 
     socket.on("disconnect", () => {
       numClients--;
-      socket.emit("status", { numClients: numClients });
+      socket.broadcast.emit("blah", { numClients: numClients });
       console.log("disconnected clients:", numClients);
     });
 

@@ -38,8 +38,5 @@
   "_moduleAliases": {
     "@config": "dist/config",
     "@services": "dist/services"
-  },
-  "engines": {
-    "node": "10.16.1"
   }
 }

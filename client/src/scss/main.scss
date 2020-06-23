@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+html,
+body,
+#root,
+#root > div {
+  font-family: "S-CoreDream-2ExtraLight", Open Sans, sans-serif !important;
+  height: 100% !important;
+  min-height: 100vh;
+}
+
+* {
+  font-family: "SF Mono", S-CoreDream-2ExtraLight, Open Sans, sans-serif !important;
+}
+*:focus {
+  outline: none;
+}
+
+/* scorll */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 15px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  height: 15px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #f3f4f6;
+  height: 15px;
+}
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 15px;
+}
+
+/* abstract */
+@import "abstract/reset", "abstract/utils";
+
+/* common */
+@import "common/button", "common/common", "common/input";

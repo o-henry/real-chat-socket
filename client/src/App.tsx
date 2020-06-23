@@ -1,12 +1,11 @@
 import React from "react";
-import Enrollment from "./pages/Enrollment/Template";
-import "./index.css";
+import { Main } from "@pages/index";
 
 function App() {
   return (
-    <div className="App">
-      <Enrollment />
-    </div>
+    <>
+      <Main />
+    </>
   );
 }
 

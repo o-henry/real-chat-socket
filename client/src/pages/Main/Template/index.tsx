@@ -20,6 +20,7 @@ const MainTemplate = ({ Image, Text, width, Validation }: IMain) => {
             </div>
             {Text}
             <div className="textfield-fade-in">{Validation}</div>
+            <div className="textfield-footer">Built by Chan Haeng Lee</div>
           </div>
         </Grid>
       </Grid>

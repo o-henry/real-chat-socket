@@ -3,7 +3,7 @@ import { IMain } from "@interface/main";
 import Grid from "@material-ui/core/Grid";
 import classNames from "classnames";
 
-const MainTemplate = ({ Img, Txt, width }: IMain) => {
+const MainTemplate = ({ Image, Text, width, Validation }: IMain) => {
   console.log(width);
 
   return (
@@ -16,9 +16,10 @@ const MainTemplate = ({ Img, Txt, width }: IMain) => {
                 "main-half-circle xs": width == "xs",
               })}
             >
-              {Img}
+              {Image}
             </div>
-            {Txt}
+            {Text}
+            <div className="textfield-fade-in">{Validation}</div>
           </div>
         </Grid>
       </Grid>
@@ -27,17 +28,3 @@ const MainTemplate = ({ Img, Txt, width }: IMain) => {
 };
 
 export default MainTemplate;
-
-// const handleKeyDown = (e: { key: string }) => {
-//   if (e.key == "Enter" && nickname) {
-//     setisClick(true);
-//   }
-// };
-
-// <S.Input
-// name="nickname"
-// value={nickname}
-// onKeyDown={handleKeyDown}
-// onChange={setInputs}
-// placeholder="Please enter your nickname"
-// />

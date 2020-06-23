@@ -43,5 +43,8 @@ body,
 /* common */
 @import "common/button", "common/common", "common/input", "common/img";
 
+/* components */
+@import "components/txt";
+
 /* pages */
 @import "pages/main";

@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { MainTemplate } from "@pages/index";
-import { Img, Txt } from "@components/index";
+import { Img, Text, ValidationTextField } from "@components/index";
 import { useWidth } from "@hooks/index";
 import { character } from "@assets/index";
 
 const Main = () => {
   const width = useWidth();
+  const [isClick, setIsClick] = useState(false);
+
+  // const handleKeyDown = (e: { key: string }) => {
+  //   if (e.key == "Enter" && nickname) {
+  //     setisClick(true);
+  //   }
+  // };
 
   return (
     <>
       <MainTemplate
         width={width}
-        Img={<Img style="main-character" src={character} alt="character" />}
-        Txt={<Txt>Message</Txt>}
+        Image={<Img style="main-character" src={character} alt="character" />}
+        Text={<Text>Message</Text>}
+        Validation={
+          <ValidationTextField
+            name="nickname"
+            value=""
+            // onKeyDown={handleKeyDown}
+            // onChange={setInputs}
+            placeholder="Please enter your nickname"
+          />
+        }
       />
     </>
   );

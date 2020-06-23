@@ -8,7 +8,6 @@ const socket = io.connect(
 );
 
 const Chat = ({ nickname }: any) => {
-  return <div>any</div>;
   // const [chat, setChat] = useState<any>([]);
   // const [inputs, setInputs] = useInput();
   // const { msg } = inputs;

@@ -1,5 +1,6 @@
 export interface IMain {
   width: any;
-  Img: React.ReactNode;
-  Txt: React.ReactNode;
+  Image: React.ReactNode;
+  Text: React.ReactNode;
+  Validation: React.ReactNode;
 }

@@ -1,20 +1,21 @@
 import React from "react";
 import { Img } from "@components/index";
-import { useWidth } from "@hooks/index";
 import { character } from "@assets/index";
 import Grid from "@material-ui/core/Grid";
 import classNames from "classnames";
 
-const MainTemplate = () => {
-  const width = useWidth();
-  console.log("width: ", width);
-
+const MainTemplate = ({ width }: any) => {
+  console.log(width);
   return (
     <>
       <Grid container>
         <Grid item xs={12}>
           <div className="main-container">
-            <div className="main-half-circle">
+            <div
+              className={classNames("main-half-circle", {
+                "main-half-circle xs": width == "xs",
+              })}
+            >
               <Img style="main-character" src={character} alt="character" />
             </div>
           </div>

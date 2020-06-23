@@ -6,5 +6,9 @@
     background-color: white;
     padding-bottom: 27%;
     background: radial-gradient(circle at top, white 50vw, transparent 17.1vw);
+    &.xs {
+      padding-bottom: 35%;
+      background: radial-gradient(circle at top, white 81%, transparent 17.1vw);
+    }
   }
 }

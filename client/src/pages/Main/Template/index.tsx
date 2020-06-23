@@ -1,11 +1,11 @@
 import React from "react";
-import { Img } from "@components/index";
-import { character } from "@assets/index";
+import { IMain } from "@interface/main";
 import Grid from "@material-ui/core/Grid";
 import classNames from "classnames";
 
-const MainTemplate = ({ width }: any) => {
+const MainTemplate = ({ Img, Txt, width }: IMain) => {
   console.log(width);
+
   return (
     <>
       <Grid container>
@@ -16,8 +16,9 @@ const MainTemplate = ({ width }: any) => {
                 "main-half-circle xs": width == "xs",
               })}
             >
-              <Img style="main-character" src={character} alt="character" />
+              {Img}
             </div>
+            {Txt}
           </div>
         </Grid>
       </Grid>

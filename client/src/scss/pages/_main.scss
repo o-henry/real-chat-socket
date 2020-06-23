@@ -3,11 +3,10 @@
   width: 100%;
 
   .main-half-circle {
-    background-color: white;
-    padding-bottom: 27%;
-    background: radial-gradient(circle at top, white 50vw, transparent 17.1vw);
+    background: radial-gradient(circle at top, white 81%, transparent 17.1vw);
+    height: 50%;
+    position: relative;
     &.xs {
-      padding-bottom: 35%;
       background: radial-gradient(circle at top, white 81%, transparent 17.1vw);
     }
   }

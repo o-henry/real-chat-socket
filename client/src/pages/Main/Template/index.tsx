@@ -3,7 +3,12 @@ import { IMain } from "@interface/main";
 import Grid from "@material-ui/core/Grid";
 import classNames from "classnames";
 
-const MainTemplate = ({ Image, Text, width, Validation }: IMain) => {
+const MainTemplate = ({
+  Image,
+  Text,
+  width,
+  Validation,
+}: IMain): React.ReactElement => {
   console.log(width);
 
   return (

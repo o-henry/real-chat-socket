@@ -1,10 +1,11 @@
 import React from "react";
-import { Main } from "@pages/index";
+import { Main, Chat } from "@pages/index";
 
 function App() {
   return (
     <>
-      <Main />
+      {/* <Main /> */}
+      <Chat />
     </>
   );
 }

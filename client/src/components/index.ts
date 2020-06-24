@@ -5,5 +5,5 @@ export { default as Text } from "./atom/Text";
 /* molecules */
 export { default as ValidationTextField } from "./molecules/ValidationTextField";
 
-/* organsim */
-export { default as Chat } from "./organism/Chat";
+/* organism */
+export { default as Message } from "./organism/Message";

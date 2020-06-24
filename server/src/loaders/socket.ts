@@ -8,27 +8,29 @@ const socketServer = ({ server }: { server: e.Application }) => {
   io.set("origins", "*:*");
 
   io.on("connection", (socket: any) => {
-    socket.on("status", (numClient: any) => {
-      numClients++;
-      socket.emit("status", { numClient: numClient });
-      socket.broadcast.emit("status", {
-        numClient: numClients,
-      });
-    });
+    console.log("사용자 연결됨");
 
-    console.log("Connected clients:", numClients);
+    // io.emit("status", (numClient: any) => {
+    //   numClients++;
+    // });
 
-    socket.on("disconnect", () => {
-      numClients--;
-      socket.broadcast.emit("blah", { numClients: numClients });
-      console.log("disconnected clients:", numClients);
-    });
+    // console.log("Connected clients:", numClients);
 
+    /* Chat message */
     socket.on("chat message", (nickname: string, msg: string) => {
+      console.log("message", msg);
       io.emit("chat message", nickname, msg);
     });
 
-    console.log(socket.client.conn.server.clientsCount + " users connected");
+    /* disconnect */
+    socket.on("disconnect", () => {
+      console.log("user disconnect");
+      // numClients--;
+      //   socket.broadcast.emit("blah", { numClients: numClients });
+      //   console.log("disconnected clients:", numClients);
+    });
+
+    // console.log(socket.client.conn.server.clientsCount + " users connected");
   });
 };
 

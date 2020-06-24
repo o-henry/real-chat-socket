@@ -2,26 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Message } from "@components/index";
 import { ChatTemplate } from "@pages/index";
 import { useInput } from "@hooks/index";
-import { socketClient } from "@config/socket";
+import { socket, socketClient } from "@config/socket";
 
 const Chat = () => {
   const [chat, setChat] = useState<any>([]);
   const [inputs, setInputs] = useInput();
   const { msg, nickname } = inputs;
 
-  const Socket = socketClient(
-    nickname,
-    msg,
-    setChat([...chat, { nickname, msg }])
-  );
+  const Socket = socketClient(nickname, msg);
 
   useEffect(() => {
-    Socket.saveMessage();
+    socket.on("chat message", ({ nickname, msg }: any) => {
+      setChat([...chat, { nickname, msg }]);
+    });
   });
 
   return (
     <>
-      <ChatTemplate Message={<Message />} />
+      <ChatTemplate
+        msg={msg}
+        nickname={nickname}
+        setInputs={setInputs}
+        handleKeyDown={Socket.handleKeyDown}
+        onSubmitMessage={Socket.onSubmitMessage}
+        Message={<Message chat={chat} />}
+      />
     </>
   );
 };

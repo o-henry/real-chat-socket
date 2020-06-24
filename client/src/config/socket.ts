@@ -1,12 +1,12 @@
 import io from "socket.io-client";
 
-const socket = io.connect(
+export const socket = io.connect(
   // `${process.env.REACT_APP_HEROKU_URL}` ||
   `${process.env.REACT_APP_SOCKET_URL}`
 );
 
 // config object
-export const socketClient = (nickname: any, msg: any, setChat: any) => {
+export const socketClient = (nickname: any, msg: any) => {
   function onSubmitMessage() {
     socket.emit("chat message", { nickname, msg });
   }
@@ -17,15 +17,8 @@ export const socketClient = (nickname: any, msg: any, setChat: any) => {
     }
   }
 
-  function saveMessage() {
-    socket.on("chat message", () => {
-      return setChat;
-    });
-  }
-
   return {
     onSubmitMessage,
     handleKeyDown,
-    saveMessage,
   };
 };

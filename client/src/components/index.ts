@@ -6,4 +6,4 @@ export { default as Text } from "./atom/Text";
 export { default as ValidationTextField } from "./molecules/ValidationTextField";
 
 /* organism */
-export { default as Message } from "./organism/Message";
+export { default as RenderMessage } from "./organism/RenderMessage";

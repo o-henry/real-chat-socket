@@ -12,16 +12,14 @@ const ChatTemplate = ({
   return (
     <>
       <div>{Message}</div>
-      <div>
-        <input
-          name="msg"
-          value={msg}
-          onChange={setInputs}
-          onKeyDown={handleKeyDown}
-          placeholder="Type a message here"
-        />
-        <button onClick={onSubmitMessage}>버튼</button>
-      </div>
+      <input
+        name="msg"
+        value={msg}
+        onChange={setInputs}
+        onKeyDown={handleKeyDown}
+        placeholder="Type a message here"
+      />
+      <button onClick={onSubmitMessage}>버튼</button>
     </>
   );
 };

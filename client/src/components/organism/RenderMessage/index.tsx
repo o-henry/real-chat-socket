@@ -1,6 +1,8 @@
 import React from "react";
 
-const Message = ({ chat }: any) => {
+const RenderMessage = ({ chat }: any) => {
+  console.log("chat : ", chat);
+
   return (
     <>
       {chat.map(({ nickname, msg }: any, idx: any) => {
@@ -15,4 +17,4 @@ const Message = ({ chat }: any) => {
   );
 };
 
-export default Message;
+export default RenderMessage;

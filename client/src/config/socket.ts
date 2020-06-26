@@ -1,18 +1,17 @@
 import io from "socket.io-client";
 
+export const socket = io.connect(
+  `${process.env.REACT_APP_SOCKET_URL}` || `${process.env.REACT_APP_HEROKU_URL}`
+);
+
 // config object
 export const socketClient = () => {
-  const socket = io.connect(
-    `${process.env.REACT_APP_HEROKU_URL}` ||
-      `${process.env.REACT_APP_SOCKET_URL}`
-  );
-
   function onSubmitMessage(nickname: string, msg: string) {
-    socket.emit("message", { nickname, msg });
+    socket.emit("message", nickname, msg);
   }
 
   function message(nickname: any, msg: any) {
-    socket.on("message", (nickname: any, msg: any) => {
+    socket.on("message", () => {
       console.log(nickname, msg);
     });
   }

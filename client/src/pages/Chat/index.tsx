@@ -2,24 +2,25 @@ import React, { useState, useEffect } from "react";
 import { RenderMessage } from "@components/index";
 import { ChatTemplate } from "@pages/index";
 import { useInput } from "@hooks/index";
-import { socketClient } from "@config/socket";
+import { socket, socketClient } from "@config/socket";
 
 const Chat = () => {
   const [chat, setChat] = useState<any>([]);
   const [inputs, setInputs] = useInput();
   const { msg, nickname } = inputs;
 
-  const socket = socketClient();
+  const Socket = socketClient();
 
   useEffect(() => {
-    // setChat([...chat, { nickname, msg }]);
-    socket.message(nickname, msg);
-
+    socket.on("message", () => {
+      console.log("test", nickname, msg);
+      setChat([...chat, { nickname, msg }]);
+    });
     return () => {
-      socket.disconnect();
-      socket.close();
+      Socket.disconnect();
+      Socket.close();
     };
-  }, [socket, nickname, msg]);
+  }, [Socket, nickname, msg]);
 
   return (
     <>
@@ -27,8 +28,8 @@ const Chat = () => {
         msg={msg}
         nickname={nickname}
         setInputs={setInputs}
-        handleKeyDown={socket.handleKeyDown}
-        onSubmitMessage={socket.onSubmitMessage}
+        handleKeyDown={Socket.handleKeyDown}
+        onSubmitMessage={Socket.onSubmitMessage}
         Message={<RenderMessage chat={chat} />}
       />
     </>

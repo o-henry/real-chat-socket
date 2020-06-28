@@ -16,7 +16,7 @@ const socketServer = ({ server }: { server: e.Application }) => {
     // console.log("Connected clients:", numClients);
 
     /* Chat message */
-    socket.on("message", (data: any) => {
+    socket.on("message", async (data: any) => {
       console.log("message", data);
       io.emit("message", data);
       const status = numClients;
@@ -32,6 +32,9 @@ const socketServer = ({ server }: { server: e.Application }) => {
     /* disconnect */
     socket.on("disconnect", () => {
       console.log("User disconnect");
+      socket.removeAllListeners("message");
+      socket.removeAllListeners("disconnect");
+
       // numClients--;
       //   socket.broadcast.emit("blah", { numClients: numClients });
       //   console.log("disconnected clients:", numClients);

@@ -5,11 +5,10 @@ const RenderMessage = ({ chat }: any) => {
 
   return (
     <>
-      {chat.map(({ nickname, msg }: any, idx: any) => {
+      {chat.map(({ message }: any, idx: any) => {
         return (
           <div key={idx}>
-            <span style={{ color: "red" }}>{nickname}</span>
-            <span>{msg}</span>
+            <span style={{ color: "black" }}>{message}</span>
           </div>
         );
       })}

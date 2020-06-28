@@ -12,7 +12,11 @@ const ValidationTextField = ({
   placeholder,
 }: IInput): React.ReactElement => {
   return (
-    <form className={classNames("Input", style)} noValidate autoComplete="off">
+    <form
+      className={classNames("Material-Input", style)}
+      noValidate
+      autoComplete="off"
+    >
       <div>
         <TextField placeholder={placeholder} value={value} name={name} />
       </div>

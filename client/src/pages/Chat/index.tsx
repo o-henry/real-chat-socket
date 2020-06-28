@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { RenderMessage } from "@components/index";
+import { RenderMessage, Button, Input } from "@components/index";
 import io from "socket.io-client";
 
 export const socket = io.connect(
@@ -30,21 +30,30 @@ const Chat = () => {
     setMessage("");
   };
 
+  const handleChange = (e: any) => {
+    setMessage(e.target.value);
+  };
+
+  const handleKeyPress = (e: any) => {
+    if (e.key === "Enter") {
+      sendMessage(e);
+    }
+  };
+
+  const handleClick = (e: any) => {
+    sendMessage(e);
+  };
+
   console.log("me", allMessage);
 
   return (
     <>
-      <input
-        type="text"
-        id="name"
-        placeholder="Enter your name"
+      <Input
         value={message}
-        onChange={({ target: { value } }) => setMessage(value)}
-        onKeyPress={(event) =>
-          event.key === "Enter" ? sendMessage(event) : null
-        }
+        onChange={handleChange}
+        onKeyDown={handleKeyPress}
       />
-      <button onClick={(e) => sendMessage(e)}>클릭</button>
+      <Button onClick={handleClick}>클릭</Button>
       <RenderMessage chat={allMessage} />
     </>
   );

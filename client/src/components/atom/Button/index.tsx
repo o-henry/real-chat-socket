@@ -1,6 +1,6 @@
 import React from "react";
-import classNames from "classnames";
 import { IButton } from "@interface/components";
+import classNames from "classnames";
 
 function Button({ onClick, style, children }: IButton): React.ReactElement {
   return (
@@ -9,9 +9,5 @@ function Button({ onClick, style, children }: IButton): React.ReactElement {
     </button>
   );
 }
-
-Button.defaultProps = {
-  style: "",
-};
 
 export default Button;

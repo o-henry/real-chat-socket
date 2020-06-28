@@ -9,8 +9,6 @@ const useInput = () => {
   });
 
   const onTextChange = (e: any) => {
-    e.preventDefault();
-    e.stopPropagation();
     const { value, name } = e.target;
     setInputs({
       ...inputs,
@@ -19,8 +17,6 @@ const useInput = () => {
   };
 
   const onChange = (e: any) => {
-    e.preventDefault();
-    e.stopPropagation();
     const { value } = e.target;
     setValue(value);
   };

@@ -17,12 +17,9 @@ function Input({
       value={value}
       placeholder={placeholder}
       onChange={onChange}
+      onKeyDown={onKeyDown}
     />
   );
 }
-
-Input.defaultProps = {
-  style: "",
-};
 
 export default Input;

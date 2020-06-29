@@ -38,7 +38,7 @@ export interface IInput extends IProps {
    * @param onKeyDown: key event handler
    */
   name?: string;
-  value: string;
+  value?: string;
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: any;

@@ -1,15 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { RenderMessage, Button, Input } from "@components/index";
+import queryString from "query-string";
 import io from "socket.io-client";
 
 export const socket = io.connect(
   `${process.env.REACT_APP_SOCKET_URL}` || `${process.env.REACT_APP_HEROKU_URL}`
 );
 
-const Chat = () => {
-  const [name, setName] = useState("");
+const Chat = ({ location }: any) => {
+  const [name, setName] = useState<any>("");
   const [message, setMessage] = useState("");
   const [allMessage, setAllMessage] = useState<any>([]);
+
+  const [chat, setChat] = useState<any>({
+    msg: "",
+    name: "",
+  });
+
+  useEffect(() => {
+    const { name } = queryString.parse(location.search);
+    setName(name);
+
+    socket.emit("join", { name }, (error: any) => {
+      console.log("name:", name);
+      if (error) {
+        alert(error);
+      }
+    });
+  }, [socket]);
 
   useEffect(() => {
     socket.on("message", (message: any) => {
@@ -49,12 +67,13 @@ const Chat = () => {
   return (
     <>
       <Input
+        name="name"
         value={message}
         onChange={handleChange}
         onKeyDown={handleKeyPress}
       />
       <Button onClick={handleClick}>클릭</Button>
-      <RenderMessage chat={allMessage} />
+      <RenderMessage chat={allMessage} name={name} />
     </>
   );
 };

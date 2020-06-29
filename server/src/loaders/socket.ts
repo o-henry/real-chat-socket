@@ -15,12 +15,18 @@ const socketServer = ({ server }: { server: e.Application }) => {
 
     // console.log("Connected clients:", numClients);
 
+    /* Name */
+    socket.on("join", async (data: any) => {
+      console.log("name: ", data);
+      io.emit("join", data);
+    });
+
     /* Chat message */
     socket.on("message", async (data: any) => {
       console.log("message", data);
       io.emit("message", data);
-      const status = numClients;
 
+      // const status = numClients;
       // io.emit("message", nickname, msg);
       // socket.emit("message", {
       //   nickname,
@@ -32,8 +38,6 @@ const socketServer = ({ server }: { server: e.Application }) => {
     /* disconnect */
     socket.on("disconnect", () => {
       console.log("User disconnect");
-      socket.removeAllListeners("message");
-      socket.removeAllListeners("disconnect");
 
       // numClients--;
       //   socket.broadcast.emit("blah", { numClients: numClients });

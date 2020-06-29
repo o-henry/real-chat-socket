@@ -18,7 +18,12 @@ const ValidationTextField = ({
       autoComplete="off"
     >
       <div>
-        <TextField placeholder={placeholder} value={value} name={name} />
+        <TextField
+          placeholder={placeholder}
+          value={value}
+          name={name}
+          onChange={onChange}
+        />
       </div>
     </form>
   );

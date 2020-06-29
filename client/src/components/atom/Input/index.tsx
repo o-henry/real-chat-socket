@@ -13,6 +13,7 @@ function Input({
   return (
     <input
       className={classNames("Input", style)}
+      name={name}
       type="text"
       value={value}
       placeholder={placeholder}

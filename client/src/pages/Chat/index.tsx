@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { RenderMessage, Button, Input } from "@components/index";
+import { ChatTemplate } from "@pages/index";
 import queryString from "query-string";
 import io from "socket.io-client";
 
@@ -12,25 +12,14 @@ const Chat = ({ location }: any) => {
   const [message, setMessage] = useState("");
   const [allMessage, setAllMessage] = useState<any>([]);
 
-  const [chat, setChat] = useState<any>({
-    msg: "",
-    name: "",
-  });
-
   useEffect(() => {
     const { name } = queryString.parse(location.search);
     setName(name);
-
-    socket.emit("join", { name }, (error: any) => {
-      console.log("name:", name);
-      if (error) {
-        alert(error);
-      }
-    });
+    socket.emit("join", name);
   }, [socket]);
 
   useEffect(() => {
-    socket.on("message", (message: any) => {
+    socket.on("message", (message: string) => {
       setAllMessage((allMessage: any) => [...allMessage, message]);
     });
     return () => {
@@ -38,18 +27,19 @@ const Chat = ({ location }: any) => {
     };
   }, []);
 
-  const sendMessage = async (e: any) => {
+  const sendMessage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
 
     if (message) {
-      socket.emit("message", message, () => setMessage(""));
+      socket.emit("message", message);
+      setMessage("");
     }
-    setMessage("");
   };
 
   const handleChange = (e: any) => {
-    setMessage(e.target.value);
+    const { value } = e.target;
+    setMessage(value);
   };
 
   const handleKeyPress = (e: any) => {
@@ -62,18 +52,16 @@ const Chat = ({ location }: any) => {
     sendMessage(e);
   };
 
-  console.log("me", allMessage);
-
   return (
     <>
-      <Input
-        name="name"
-        value={message}
-        onChange={handleChange}
-        onKeyDown={handleKeyPress}
+      <ChatTemplate
+        message={message}
+        handleChange={handleChange}
+        handleKeyPress={handleKeyPress}
+        handleClick={handleClick}
+        allMessage={allMessage}
+        name={name}
       />
-      <Button onClick={handleClick}>클릭</Button>
-      <RenderMessage chat={allMessage} name={name} />
     </>
   );
 };

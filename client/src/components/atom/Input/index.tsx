@@ -10,6 +10,8 @@ function Input({
   onKeyDown,
   style,
 }: IInput): React.ReactElement {
+  console.log("value 는 message여야 합니다 : ", value);
+
   return (
     <input
       className={classNames("Input", style)}

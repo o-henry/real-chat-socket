@@ -7,3 +7,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.send-btn {
+  // position: absolute;
+  width: 1.5rem;
+}
+
+.chat-input-grid {
+  width: 90%;
+}
+
+.chat-button-grid {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  border-top: 2px solid rgba(112, 124, 151, 0.15);
+}

@@ -18,3 +18,12 @@ input::placeholder {
   justify-content: center;
   margin-top: 2.5rem;
 }
+
+/* chat-template input */
+.chat-input {
+  width: 100%;
+  border: none;
+  height: 94%;
+  border-top: 2px solid rgba(112, 124, 151, 0.15);
+  padding: 0 0 0 1rem;
+}

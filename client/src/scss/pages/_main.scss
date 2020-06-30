@@ -4,10 +4,22 @@
 
   .main-half-circle {
     background: radial-gradient(circle at top, white 81%, transparent 17.1vw);
-    height: 54%;
+    height: 50%;
     position: relative;
     &.xs {
-      background: radial-gradient(circle at top, white 81%, transparent 17.1vw);
+      background: radial-gradient(
+        circle at top,
+        white 78.1%,
+        transparent 17.1vw
+      );
+    }
+    &.sm {
+      height: 50%;
+      background: radial-gradient(
+        circle at top,
+        white 100%,
+        transparent 17.1vw
+      );
     }
   }
 
@@ -18,7 +30,8 @@
   .main-visible-btn {
     display: flex;
     justify-content: center;
-    padding-top: 1rem;
+    padding-top: 2rem;
+    color: white;
   }
 }
 

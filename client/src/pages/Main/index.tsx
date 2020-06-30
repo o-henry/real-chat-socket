@@ -20,8 +20,18 @@ const Main = () => {
       <MainTemplate
         name={name}
         width={width}
-        Image={<Img style="main-character" src={character} alt="character" />}
-        Text={<Text>Message</Text>}
+        Image={
+          <Img
+            style={
+              width == "lg" || width == "xl"
+                ? "main-character lg"
+                : "main-character"
+            }
+            src={character}
+            alt="character"
+          />
+        }
+        Text={<Text style={width == "lg" ? "Text lg" : "Text"}>Message</Text>}
         Validation={
           <ValidationTextField
             name="name"

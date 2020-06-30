@@ -21,6 +21,11 @@ const MainTemplate = ({
             <div
               className={classNames("main-half-circle", {
                 "main-half-circle xs": width == "xs",
+                "main-half-circle sm":
+                  width == "sm" ||
+                  width == "md" ||
+                  width == "lg" ||
+                  width == "xl",
               })}
             >
               {Image}

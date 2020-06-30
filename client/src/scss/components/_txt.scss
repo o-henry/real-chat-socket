@@ -4,6 +4,10 @@
   justify-content: center;
   margin-top: 8rem;
   font-size: 1.7rem;
+
+  &.lg {
+    margin-top: 10rem;
+  }
 }
 
 .textfield-footer {

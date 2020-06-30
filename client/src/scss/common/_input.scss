@@ -27,3 +27,8 @@ input::placeholder {
   border-top: 2px solid rgba(112, 124, 151, 0.15);
   padding: 0 0 0 1rem;
 }
+
+.MuiInputBase-input {
+  text-align: center;
+  color: white !important;
+}

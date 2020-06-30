@@ -15,7 +15,8 @@
     "baseUrl": "./src",
     "paths": {
       "@config/*": ["config/*"],
-      "@services/*": ["services/*"]
+      "@services/*": ["services/*"],
+      "@controllers/*": ["api/controllers/*"]
     }
   },
   "exclude": ["node_modules", "tests"]

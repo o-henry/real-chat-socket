@@ -1,4 +1,6 @@
+//@ts-nocheck
 import express from "express";
+import { addUser, removeUser, getUser } from "../api/controllers/user";
 
 const socketServer = ({ server }: { server: express.Application }) => {
   const io = require("socket.io")(server);
@@ -17,14 +19,15 @@ const socketServer = ({ server }: { server: express.Application }) => {
 
     /* Name */
     socket.on("join", (name: any) => {
-      console.log("서버에서 받은 이름: ", name);
-      socket.emit("join", name);
+      const { user } = addUser({ id: socket.id, name });
+      socket.emit("message", { user: "admin", text: `${user.name}` });
     });
 
     /* Chat message */
-    socket.on("message", (message: any) => {
-      console.log("메시지", message);
-      io.emit("message", message);
+    socket.on("sendMessage", (message: any) => {
+      const user = getUser(socket.id);
+
+      io.emit("message", { user: user.name, text: message });
 
       // const status = numClients;
       // io.emit("message", nickname, msg);
@@ -42,6 +45,13 @@ const socketServer = ({ server }: { server: express.Application }) => {
     /* disconnect */
     socket.on("disconnect", () => {
       console.log("User disconnect");
+      const user = removeUser(socket.id);
+      if (user) {
+        io.emit("message", {
+          user: "Admin",
+          text: `${user.name} has left.`,
+        });
+      }
 
       // numClients--;
       //   socket.broadcast.emit("blah", { numClients: numClients });

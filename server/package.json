@@ -37,7 +37,8 @@
   },
   "_moduleAliases": {
     "@config": "dist/config",
-    "@services": "dist/services"
+    "@services": "dist/services",
+    "@controllers": "dist/controllers"
   },
   "engines": {
     "node": "10.16.1",

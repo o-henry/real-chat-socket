@@ -20,7 +20,7 @@ const socketServer = ({ server }: { server: express.Application }) => {
     /* Name */
     socket.on("join", (name: any) => {
       const { user } = addUser({ id: socket.id, name });
-      socket.emit("message", { user: "admin", text: `${user.name}` });
+      // socket.emit("message", { user: "", text: `${user.name}` });
     });
 
     /* Chat message */
@@ -48,7 +48,6 @@ const socketServer = ({ server }: { server: express.Application }) => {
       const user = removeUser(socket.id);
       if (user) {
         io.emit("message", {
-          user: "Admin",
           text: `${user.name} has left.`,
         });
       }

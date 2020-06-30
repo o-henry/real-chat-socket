@@ -4,23 +4,21 @@ import classNames from "classnames";
 
 function Input({
   name,
-  value,
+  message,
   placeholder,
-  onChange,
-  onKeyDown,
+  handleChange,
+  handleKeyPress,
   style,
 }: IInput): React.ReactElement {
-  console.log("value 는 message여야 합니다 : ", value);
-
   return (
     <input
       className={classNames("Input", style)}
       name={name}
       type="text"
-      value={value}
+      value={message}
       placeholder={placeholder}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
+      onChange={handleChange}
+      onKeyDown={handleKeyPress}
     />
   );
 }

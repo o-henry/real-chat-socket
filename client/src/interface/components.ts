@@ -39,6 +39,9 @@ export interface IInput extends IProps {
    */
   name?: string;
   value?: string;
+  message?: string;
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleKeyPress?: any;
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: any;

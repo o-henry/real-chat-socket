@@ -11,8 +11,6 @@ const ChatTemplate = ({
   handleClick,
   allMessage,
 }: any) => {
-  console.log("aaaa", name);
-  console.log("allll", allMessage);
   return (
     <>
       <Grid className="chat" container>
@@ -25,9 +23,9 @@ const ChatTemplate = ({
               <Input
                 style="chat-input"
                 name={name}
-                value={message}
-                onChange={handleChange}
-                onKeyDown={handleKeyPress}
+                message={message}
+                handleChange={handleChange}
+                handleKeyPress={handleKeyPress}
               />
             </Grid>
             <Grid className="chat-button-grid" item>

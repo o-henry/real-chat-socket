@@ -7,10 +7,11 @@ const RenderMessage = ({ chat, name }: any) => {
   return (
     <>
       {chat.map((message: any, idx: any) => {
+        console.log("messss", message);
         return (
           <div key={idx}>
-            <span>{name}</span>
-            <span>{message}</span>
+            <span>{message.user}</span>
+            <span>{message.text}</span>
           </div>
         );
       })}

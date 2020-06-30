@@ -16,7 +16,7 @@ const Chat = ({ location }: any) => {
     const { name } = queryString.parse(location.search);
     setName(name);
     socket.emit("join", name);
-  }, [socket]);
+  }, [socket, location.search]);
 
   useEffect(() => {
     socket.on("message", (message: string) => {
@@ -32,7 +32,7 @@ const Chat = ({ location }: any) => {
     e.stopPropagation();
 
     if (message) {
-      socket.emit("message", message);
+      socket.emit("sendMessage", message);
       setMessage("");
     }
   };

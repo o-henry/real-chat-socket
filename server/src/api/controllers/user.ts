@@ -1,4 +1,4 @@
-const users: any[] = [];
+export const users: any[] = [];
 
 export const addUser = ({ id, name }: any) => {
   name = name.trim().toLowerCase();

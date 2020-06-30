@@ -3,7 +3,6 @@ import { MainTemplate } from "@pages/index";
 import { useWidth } from "@hooks/index";
 import { character } from "@assets/index";
 import { Img, Text, ValidationTextField } from "@components/index";
-import { Link } from "react-router-dom";
 
 const Main = () => {
   const width = useWidth();
@@ -14,18 +13,12 @@ const Main = () => {
     setName(e.target.value);
   };
 
-  const submitName = (e: any) => {
-    e.preventDefault();
-    if (e.key === "Enter" && !name) {
-      return;
-    }
-  };
-
   console.log("name", name);
 
   return (
     <>
       <MainTemplate
+        name={name}
         width={width}
         Image={<Img style="main-character" src={character} alt="character" />}
         Text={<Text>Message</Text>}
@@ -37,12 +30,6 @@ const Main = () => {
           />
         }
       />
-      <Link
-        onClick={(e) => (!name ? e.preventDefault() : null)}
-        to={`/chat?name=${name}`}
-      >
-        JOIN
-      </Link>
     </>
   );
 };

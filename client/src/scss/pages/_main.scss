@@ -4,11 +4,21 @@
 
   .main-half-circle {
     background: radial-gradient(circle at top, white 81%, transparent 17.1vw);
-    height: 50%;
+    height: 54%;
     position: relative;
     &.xs {
       background: radial-gradient(circle at top, white 81%, transparent 17.1vw);
     }
+  }
+
+  .main-join-btn {
+    display: none;
+  }
+
+  .main-visible-btn {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
   }
 }
 

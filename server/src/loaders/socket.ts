@@ -1,6 +1,6 @@
 //@ts-nocheck
 import express from "express";
-import { addUser, removeUser, getUser } from "../api/controllers/user";
+import { users, addUser, removeUser, getUser } from "../api/controllers/user";
 
 const socketServer = ({ server }: { server: express.Application }) => {
   const io = require("socket.io")(server);
@@ -15,32 +15,26 @@ const socketServer = ({ server }: { server: express.Application }) => {
     console.log(`${id} 소켓 사용자 연결됨`);
     numClients++;
 
-    // console.log("Connected clients:", numClients);
-
     /* Name */
     socket.on("join", (name: any) => {
       const { user } = addUser({ id: socket.id, name });
-      // socket.emit("message", { user: "", text: `${user.name}` });
+      if (user) {
+        io.emit("message", {
+          text: `${user.name} has Join.`,
+          text: `${users.length} has connected`,
+        });
+      }
     });
 
     /* Chat message */
     socket.on("sendMessage", (message: any) => {
       const user = getUser(socket.id);
-
-      io.emit("message", { user: user.name, text: message });
-
-      // const status = numClients;
-      // io.emit("message", nickname, msg);
-      // socket.emit("message", {
-      //   nickname,
-      //   msg,
-      //   timestamp: Date.now(),
-      // });
+      io.emit("message", {
+        user: user.name,
+        text: message,
+        timestamp: Date.now(),
+      });
     });
-
-    // socket.on("chat", ({ nickname, msg }: any) => {
-    //   io.emit("chat", { nickname, msg });
-    // });
 
     /* disconnect */
     socket.on("disconnect", () => {
@@ -49,19 +43,14 @@ const socketServer = ({ server }: { server: express.Application }) => {
       if (user) {
         io.emit("message", {
           text: `${user.name} has left.`,
+          text: `${users.length} has left`,
         });
       }
-
-      // numClients--;
-      //   socket.broadcast.emit("blah", { numClients: numClients });
-      //   console.log("disconnected clients:", numClients);
     });
 
     socket.on("error", (error: any) => {
       console.log(error);
     });
-
-    // console.log(socket.client.conn.server.clientsCount + " users connected");
   });
 };
 

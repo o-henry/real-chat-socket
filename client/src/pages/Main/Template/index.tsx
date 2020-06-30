@@ -1,5 +1,6 @@
 import React from "react";
 import { IMain } from "@interface/main";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import classNames from "classnames";
 
@@ -7,6 +8,7 @@ const MainTemplate = ({
   Image,
   Text,
   width,
+  name,
   Validation,
 }: IMain): React.ReactElement => {
   console.log(width);
@@ -25,7 +27,16 @@ const MainTemplate = ({
             </div>
             {Text}
             <div className="textfield-fade-in">{Validation}</div>
-            <div className="textfield-footer">Built by Chan Haeng Lee</div>
+            <Link
+              className={classNames("main-join-btn", {
+                "main-visible-btn": name !== "",
+              })}
+              onClick={(e) => (!name ? e.preventDefault() : null)}
+              to={`/chat?name=${name}`}
+            >
+              JOIN
+            </Link>
+            {/* <div className="textfield-footer">Built by Chan Haeng Lee</div> */}
           </div>
         </Grid>
       </Grid>

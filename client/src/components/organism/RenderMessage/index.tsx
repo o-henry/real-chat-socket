@@ -7,6 +7,7 @@ const RenderMessage = ({ chat, name }: any) => {
   return (
     <>
       {chat.map((message: any, idx: any) => {
+        console.log("aaaa", message.count);
         return (
           <div
             className={

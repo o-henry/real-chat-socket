@@ -25,4 +25,7 @@
 ### Install
 
 `cd client && npm i && npm start`
+
+<br />
+
 `cd server && npm i && npm run start:dev`

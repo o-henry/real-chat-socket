@@ -22,7 +22,7 @@ const socketServer = ({ server }: { server: express.Application }) => {
       if (user) {
         io.emit("message", {
           join: `${user.name} has Join.`,
-          count: `${users.length} has connected`,
+          count: `${users.length} has Connected`,
         });
       }
     });
@@ -43,8 +43,8 @@ const socketServer = ({ server }: { server: express.Application }) => {
       const user = removeUser(socket.id);
       if (user) {
         io.emit("message", {
-          join: `${user.name} has left.`,
-          count: `${users.length} has left`,
+          join: `${user.name} has Left.`,
+          count: `${users.length} has Left`,
         });
       }
     });

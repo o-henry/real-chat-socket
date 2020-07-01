@@ -6,6 +6,7 @@ import "moment/locale/ko";
 import { users, addUser, removeUser, getUser } from "../api/controllers/user";
 
 moment.locale("ko");
+const seoul = moment.tz("Asia/Seoul");
 
 const socketServer = ({ server }: { server: express.Application }) => {
   const io = require("socket.io")(server);
@@ -37,7 +38,7 @@ const socketServer = ({ server }: { server: express.Application }) => {
       io.emit("message", {
         user: user.name,
         text: message,
-        timestamp: moment().format("LTS"),
+        timestamp: seoul.format("LTS"),
       });
     });
 

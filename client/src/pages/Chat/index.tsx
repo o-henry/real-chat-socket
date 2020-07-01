@@ -3,9 +3,7 @@ import { ChatTemplate } from "@pages/index";
 import queryString from "query-string";
 import io from "socket.io-client";
 
-export const socket = io.connect(
-  `${process.env.REACT_APP_SOCKET_URL}` || `${process.env.REACT_APP_HEROKU_URL}`
-);
+export const socket = io.connect(`${process.env.REACT_APP_HEROKU_URL}`);
 
 const Chat = ({ location }: any) => {
   const [name, setName] = useState<any>("");

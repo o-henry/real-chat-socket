@@ -41,6 +41,9 @@ const Chat = ({ location }: any) => {
   };
 
   const handleKeyPress = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     if (e.key === "Enter") {
       sendMessage(e);
     }

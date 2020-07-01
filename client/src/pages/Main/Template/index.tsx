@@ -11,8 +11,6 @@ const MainTemplate = ({
   name,
   Validation,
 }: IMain): React.ReactElement => {
-  console.log(width);
-
   return (
     <>
       <Grid container>

@@ -18,7 +18,7 @@ function Input({
       value={message}
       placeholder={placeholder}
       onChange={handleChange}
-      onKeyDown={handleKeyPress}
+      onKeyPress={handleKeyPress}
     />
   );
 }

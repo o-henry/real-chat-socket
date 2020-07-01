@@ -3,7 +3,7 @@ dotenv.config();
 process.env.NODE_ENV = process.env.NODE_ENV || "production";
 
 export default {
-  port: process.env.PORT || 8000,
+  port: process.env.PORT,
 
   api: {
     prefix: "/api",

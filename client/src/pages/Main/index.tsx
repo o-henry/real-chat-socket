@@ -13,8 +13,6 @@ const Main = () => {
     setName(e.target.value);
   };
 
-  console.log("name", name);
-
   return (
     <>
       <MainTemplate
@@ -36,7 +34,7 @@ const Main = () => {
           <ValidationTextField
             name="name"
             onChange={handleChange}
-            placeholder="Please enter your nickname"
+            placeholder="Please enter your name"
           />
         }
       />

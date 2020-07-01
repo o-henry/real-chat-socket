@@ -41,7 +41,9 @@ const MainTemplate = ({
             >
               JOIN
             </Link>
-            {/* <div className="textfield-footer">Built by Chan Haeng Lee</div> */}
+            <div className="textfield-footer">
+              Please refresh after connecting.
+            </div>
           </div>
         </Grid>
       </Grid>

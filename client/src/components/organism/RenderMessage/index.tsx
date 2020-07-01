@@ -4,9 +4,6 @@ import { useWidth } from "@hooks/index";
 const RenderMessage = ({ chat, name }: any) => {
   const width = useWidth();
 
-  console.log("chat : ", chat);
-  console.log("name : ", name);
-
   return (
     <>
       {chat.map((message: any, idx: any) => {

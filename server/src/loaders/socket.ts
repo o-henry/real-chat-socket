@@ -2,11 +2,11 @@
 import express from "express";
 import moment from "moment";
 import "moment/locale/ko";
-import "moment-timezone";
+
 import { users, addUser, removeUser, getUser } from "../api/controllers/user";
 
 moment.locale("ko");
-const seoul = moment().tz("Asia/Seoul").format("LTS");
+// const seoul = moment().tz("Asia/Seoul").format("LTS");
 
 const socketServer = ({ server }: { server: express.Application }) => {
   const io = require("socket.io")(server);
@@ -38,7 +38,7 @@ const socketServer = ({ server }: { server: express.Application }) => {
       io.emit("message", {
         user: user.name,
         text: message,
-        timestamp: seoul,
+        timestamp: moment().format("LTS"),
       });
     });
 

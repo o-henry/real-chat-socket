@@ -44,7 +44,7 @@ const socketServer = ({ server }: { server: express.Application }) => {
       if (user) {
         io.emit("message", {
           join: `${user.name} has Left.`,
-          count: `${users.length} has Left`,
+          count: `${users.length} has remained`,
         });
       }
     });

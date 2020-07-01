@@ -14,7 +14,7 @@ const ChatTemplate = ({
   return (
     <>
       <Grid className="chat" container>
-        <Grid item xs={12}>
+        <Grid className="chat-layout" item xs={12}>
           <div className="chat-container">
             <RenderMessage chat={allMessage} name={name} />
           </div>

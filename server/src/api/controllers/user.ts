@@ -1,7 +1,7 @@
 export const users: any[] = [];
 
 export const addUser = ({ id, name }: any) => {
-  name = name.trim().toLowerCase();
+  // name = name.trim().toLowerCase();
 
   const existingUser = users.find((user) => user.name === name);
 

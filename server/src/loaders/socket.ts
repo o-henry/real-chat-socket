@@ -1,5 +1,6 @@
 //@ts-nocheck
 import express from "express";
+import moment from "moment";
 import { users, addUser, removeUser, getUser } from "../api/controllers/user";
 
 const socketServer = ({ server }: { server: express.Application }) => {
@@ -20,8 +21,8 @@ const socketServer = ({ server }: { server: express.Application }) => {
       const { user } = addUser({ id: socket.id, name });
       if (user) {
         io.emit("message", {
-          text: `${user.name} has Join.`,
-          text: `${users.length} has connected`,
+          join: `${user.name} has Join.`,
+          count: `${users.length} has connected`,
         });
       }
     });
@@ -32,7 +33,7 @@ const socketServer = ({ server }: { server: express.Application }) => {
       io.emit("message", {
         user: user.name,
         text: message,
-        timestamp: Date.now(),
+        timestamp: moment().format("LTS"),
       });
     });
 
@@ -42,8 +43,8 @@ const socketServer = ({ server }: { server: express.Application }) => {
       const user = removeUser(socket.id);
       if (user) {
         io.emit("message", {
-          text: `${user.name} has left.`,
-          text: `${users.length} has left`,
+          join: `${user.name} has left.`,
+          count: `${users.length} has left`,
         });
       }
     });

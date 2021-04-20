@@ -12,9 +12,9 @@
 
 - React
 - Typescript
-- sass
-- material-ui
-- socket.io
+- Sass
+- Material-ui
+- Socket.io
 - Firebase
 - NodeJS(Express)
 - Heroku
@@ -23,8 +23,6 @@
 
 ## Installation
 
-`cd client && npm i && npm start`
+`cd client && npm i`
 
-<br />
-
-`cd server && npm i && npm run start:dev`
+`cd server && npm i`

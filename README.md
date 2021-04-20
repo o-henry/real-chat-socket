@@ -1,32 +1,27 @@
-# 사용방법
+# React Socket Chat 
+
+<p align="center">
+  
+#### 사용방법
 > 혼자 테스트 하실 경우 브라우저 2개를 통해 접속하셔서 사용하실 수 있습니다.
-> 한글만 입력 가능합니다.
+> 닉네임 및 메시지 입력 모두 한글만 입력 가능합니다.
 
-# Random Chatting App
+</p>
 
-### Client
+## Stack
 
 - React
 - Typescript
-- Styled-components -> Sass ( 2020.06.23 )
+- sass
 - Material-UI
-- Responsive
 - socket.io
 - Firebase
-- atomic desgin pattern
-
-### Server
-
 - Node(Express)
-- Typescript
-- socket.io
 - Heroku
+- Figma
 
-### Design
 
-[Figma Free Design Template](https://www.figma.com/file/9J4QtDLG363kz86Kq0FmJw/Android-Messaging-App)
-
-### Install
+## Installation
 
 `cd client && npm i && npm start`
 

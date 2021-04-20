@@ -13,10 +13,10 @@
 - React
 - Typescript
 - sass
-- Material-UI
+- material-ui
 - socket.io
 - Firebase
-- Node(Express)
+- NodeJS(Express)
 - Heroku
 - Figma
 
